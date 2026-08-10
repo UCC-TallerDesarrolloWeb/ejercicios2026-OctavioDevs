@@ -1,4 +1,4 @@
-## :dizzy: Ejercicio de Taller de Desarrollo Web
+## 🚀 Ejercicio de Taller de Desarrollo Web
 
 Sobre Mi:
 - *Octavio Jose Albarracin Simes*
