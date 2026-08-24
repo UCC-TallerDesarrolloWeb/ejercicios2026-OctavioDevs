@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Ejercicio Formulario</title>
     <style>
         form {
@@ -10,34 +11,71 @@
         }
     </style>
 </head>
-<body>
-<!--Cree un Formulario con los campos que se proponen a continuacion-->
-<!--Agregue el atributo legend-->
 
-<!--Si tienes dudas de como hacer un formulario, puedes consultar:
+<body>
+    <!--Cree un Formulario con los campos que se proponen a continuacion-->
+    <!--Agregue el atributo legend-->
+
+    <!--Si tienes dudas de como hacer un formulario, puedes consultar:
     https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_output-->
 
-<h3>Suscribase a Nuestro Portal de Noticias! Crear una cuenta es rápido!</h3>
-Nombre:
-Apellido:
-Sexo: Masculino Femenino
-Edad:
-Email:
-Usuario:
-Password:
-Confirmar Password:
+    <h3>
+        <legend>
+            Suscribase a Nuestro Portal de Noticias! Crear una cuenta es rápido!
+        </legend>
+    </h3>
+    <form name="form-suscripcion">
+        <p>
+            <input type="text" name="nombre" placeholder="Nombre" maxlength="50" />
+        </p>
+        <p>
+            <input type="text" name="apellido" placeholder="Apellido" maxlength="50" />
+        </p>
+        <p>
+            Sexo:
+            <input type="radio" name="sexo" value="masculino" checked /> Masculino
+            <input type="radio" name="sexo" value="femenino" /> Femenino
+        </p>
+        <p>
+            <input type="number" name="edad" placeholder="Edad" maxlength="3" />
+        </p>
+        <p>
+            <input type="email" name="email" placeholder="Email" maxlength="50" />
+        </p>
+        <p>
+            <input type="text" name="usuario" placeholder="Usuario" maxlength="25" />
+        </p>
+        <p>
+            <input type="password" name="password" placeholder="Password" maxlength="25" />
+        </p>
+        <p>
+            <input type="password" name="confirmar_password" placeholder="Confirmar Password" maxlength="25" />
+        </p>
+        <p>
+            Tipo de servicio:
+            <select name="tipo_servicio">
+                <option value="free">Free</option>
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+            </select>
+        </p>
+        <p>
+            Tema:
+            <input type="checkbox" name="tema_1" placeholder="Politica" /> Política
+            <input type="checkbox" name="tema_2" placeholder="Negocios" />Negocios
+            <input type="checkbox" name="tema_3" placeholder="Tecnología" />Tecnología
+            <input type="checkbox" name="tema_4" placeholder="Salud" />Salud <br />
+        </p>
 
-Tipo de servicio: Free / Standard / Premium
-Tema:
-Política
-Negocios
-Tecnología
-Salud
+        <p>
+            Agregue un comentario:
+            <textarea name="comentario" id="comentario" maxlength="150">
+            Deje su comentario...
+        </textarea>>
+        </p>
 
-Agregue un comentario:
-
-Boton de Enviar
-
-
+        <button name="enviar">Boton de enviar</button>
+    </form>
 </body>
+
 </html>

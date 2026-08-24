@@ -21,11 +21,11 @@
 -  [X] Listas
 -  [X] Link
 -  [X] Tablas I
--  [ ] Tablas II
--  [ ] Tablas III
--  [ ] Tablas VI
--  [ ] Comentarios
--  [ ] Formulario
+-  [X] Tablas II
+-  [X] Tablas III
+-  [X] Tablas IV
+-  [X] Comentarios
+-  [X] Formulario
 -  [ ] Accesibilidad
 -  [ ] Multimedia
 
