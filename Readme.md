@@ -9,15 +9,15 @@
 # Checklist de Ejercicios OBLIGATORIOS por unidad
 
 ## Unidad 1: Introducción y Herramientas de Desarrollo
--  [ ] Readme.md
--  [ ] .gitignore
+-  [X] Readme.md
+-  [X] .gitignore
 
 ## Unidad 2: Fundamentos de HTML5 y CSS3
 
 ### HTML
--  [ ] Primer HTML
--  [ ] Secciones
--  [ ] Títulos
+-  [X] Primer HTML
+-  [X] Secciones
+-  [X] Títulos
 -  [ ] Listas
 -  [ ] Link
 -  [ ] Tablas I
