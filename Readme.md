@@ -18,16 +18,16 @@
 -  [X] Primer HTML
 -  [X] Secciones
 -  [X] Títulos
--  [ ] Listas
--  [ ] Link
--  [ ] Tablas I
--  [ ] Tablas II
--  [ ] Tablas III
--  [ ] Tablas VI
--  [ ] Comentarios
--  [ ] Formulario
--  [ ] Accesibilidad
--  [ ] Multimedia
+-  [X] Listas
+-  [X] Link
+-  [X] Tablas I
+-  [X] Tablas II
+-  [X] Tablas III
+-  [X] Tablas IV
+-  [X] Comentarios
+-  [X] Formulario
+-  [X] Accesibilidad
+-  [X] Multimedia
 
 ### CSS
 -  [ ] Propiedades tipográficas

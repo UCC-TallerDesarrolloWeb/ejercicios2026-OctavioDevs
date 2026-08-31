@@ -34,4 +34,4 @@ El repositorio se irá actualizando a medida que avance el cursado.
 ### 🎓 Universidad Católica de Córdoba
 
 **Licenciatura en Bioinformática**  
-Taller de Desarrollo Web - 2026
+Taller de Desarrollo Web - 2026git log --oneline -4
