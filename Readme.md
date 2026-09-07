@@ -38,8 +38,8 @@
 -  [X] Backgrounds
 -  [ ] Position
 -  [X] 2 Columnas
--  [ ] Grid
--  [ ] grid-areas
+-  [X] Grid
+-  [X] grid-areas
 -  [ ] Mejora
 -  [ ] Transitions
 -  [ ] Viewport
