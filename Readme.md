@@ -36,14 +36,14 @@
 -  [X] Pseudo Clases
 -  [X] CV
 -  [X] Backgrounds
--  [ ] Position
+-  [X] Position
 -  [X] 2 Columnas
 -  [X] Grid
 -  [X] grid-areas
--  [ ] Mejora
--  [ ] Transitions
--  [ ] Viewport
--  [ ] Responsive
+-  [X] Mejora
+-  [X] Transitions
+-  [X] Viewport
+-  [X] Responsive
 
 ## Unidad 3: JavaScript y ES6+
 
