@@ -1,3 +1,9 @@
+:root{
+    --color-primario: red;
+    --color-secundario: rgb(2, 2, 132);
+    --color-texto: white;
+}
+
 main{
     display: grid;
     grid-template-columns: auto auto auto;
@@ -48,4 +54,19 @@ main{
         'footer footer';
 
     gap: 10px;
+}
+
+a {
+    text-decoration: none;
+    background-color: var(--color-primario);
+    color: var(--color-texto);
+    font-weight: 500;
+    padding: 5px;
+
+    transition: background-color 0.8s linear, padding 0.3s ease;
+}
+
+a:hover {
+    background-color: var(--color-secundario);
+    padding: 7px;
 }
