@@ -12,9 +12,41 @@
         <nav class="item2">
             Lista de Navegacion
         </nav>
-        <article class="item3">
-            Links de productos
-        </article>
+        <aside class="item3">
+            <form name="filter" id="filter">
+            <fieldset>
+                <legend>Buscador</legend>
+                <label for="search">Buscar</label>
+                <input type="text" name="search" id="search" placeholder="Buscar">
+            </fieldset>
+            <fieldset>
+                <legend>Precios</legend>
+                <p>
+                    <label for="price-min">Minimo</label>
+                    <input type="number" name="price-min" id="price-min" min="0">
+                </p>
+                <p>
+                    <label for="price-max">Maximo</label>
+                    <input type="number" name="price-max" id="price-max" min="0">
+                </p>
+            </fieldset>
+            <fieldset>
+                <legend>Tipo de Producto</legend>
+                <p>
+                    <input type="checkbox" name="tipo" id="protectores" value="protectores">
+                    <label for="Protectores">Protectores</label>
+                </p>
+                <p>
+                    <input type="checkbox" name="tipo" id="entrenamiento" value="entrenamiento">
+                    <label for="entrenamiento">Entrenamiento</label>
+                </p>
+                <p>
+                    <input type="checkbox" name="tipo" id="dobok" value="dobok">
+                    <label for="dobok">Dobok</label>
+                </p>
+            </fieldset>
+            </form>
+        </aside>
         <main class="item4">
             <div>
                 <img src="https://ucc-tallerdesarrolloweb.github.io/filminas/images/ejercicios/cabezal-cerrado.webp" alt="Cabezal Cerrado">
