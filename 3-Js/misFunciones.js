@@ -5,28 +5,42 @@
  * @param (number) valor - valor ingresado por el usuario
  * @return Valor que retorna
  */
+ convertirUnidades = (id, valor) =>{
+    let metros, pulgadas, pie, yardas;
 
-function convertirUnidades(id, valor){
     if(isNaN(valor)){
         alert ("Se ingreso un valor incorrecto: " + id);
-        document.lasUnidades.unid_metro.value = " ";
+        metros = "";
+        pulgadas = "";
+        pie = "";
+        yardas = "";
+        
     }else if(id=="metro"){
-        document.lasUnidades.unid_pulgada.value = 39.3701 * valor;
-        document.lasUnidades.unid_pie.value = 3.28084 * valor;
-        document.lasUnidades.unid_yarda.value = 1.09361 * valor;
+        metros = valor;
+        pulgadas = 39.3701 * valor;
+        pie = 3.28084 * valor;
+        yardas = 1.09361 * valor;
     }else if(id=="pulgada"){
-        document.lasUnidades.unid_metro.value = 0.0254 * valor;
-        document.lasUnidades.unid_pie.value = 0.0833333 * valor;
-        document.lasUnidades.unid_yarda.value = 0.0277778 * valor;
+        pulgadas = valor;
+        metros = 0.0254 * valor;
+        pie = 0.0833333 * valor;
+        yardas = 0.0277778 * valor;
     }else if(id=="pie"){
-        document.lasUnidades.unid_metro.value = 0.3048 * valor;
-        document.lasUnidades.unid_pulgada.value = 12 * valor;
-        document.lasUnidades.unid_yarda.value = 0.333333 * valor;
+        pie = valor;
+        metros = 0.3048 * valor;
+        pulgadas = 12 * valor;
+        yardas = 0.333333 * valor;
     }else if(id=="yarda"){
-        document.lasUnidades.unid_metro.value = 0.9144 * valor;
-        document.lasUnidades.unid_pulgada.value = 36 * valor;
-        document.lasUnidades.unid_pie.value = 3 * valor;
+        yardas = valor;
+        metros = 0.9144 * valor;
+        pulgadas = 36 * valor;
+        pie = 3 * valor;
     }
+
+    document.getElementById("metro").value = metros;
+    document.getElementById("pulgada").value = pulgadas;
+    document.getElementById("pie").value = pie;
+    document.getElementById("yarda").value = yardas;
 }
 
 /**
