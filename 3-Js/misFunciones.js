@@ -28,3 +28,26 @@ function convertirUnidades(id, valor){
         document.lasUnidades.unid_pie.value = 3 * valor;
     }
 }
+
+/**
+ * conversion de unidades de metros, pies, yardas y pulgadas
+ * @method convertirGR
+ * @param (string) id - id del elemento input en el html
+ * @return Valor que retorna
+ */
+
+function convertirGR(id){
+    let grad, rad;
+
+    if(id=="grados"){
+        grad = document.getElementById("grados").value;
+        rad = (grad * Math.PI) / 180;
+
+    }else if(id=="radianes"){
+        rad = document.getElementById("radianes").value;
+        grad = (rad * 180) / Math.PI;
+
+    }
+    document.getElementById("grados").value = grad;
+    document.getElementById("radianes").value = rad;
+}

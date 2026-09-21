@@ -50,7 +50,7 @@
 -  [X] Hola Mundo!
 -  [X] Conversor de Unidades
 -  [X] Documentación
--  [ ] Grados a Radianes
+-  [X] Grados a Radianes
 -  [ ] Refactorización
 -  [ ] Mostrar/Ocultar div
 -  [ ] Mostrar/Ocultar Dialog
