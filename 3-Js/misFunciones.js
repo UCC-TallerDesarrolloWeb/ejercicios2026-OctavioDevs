@@ -104,7 +104,7 @@ const sumar = () => {
     sum1 = document.getElementById("nums1").value;
     sum2 = document.getElementById("nums2").value;
 
-    document.getElementById("totalS").value =
+    document.getElementById("totalS").innerText =
         parseFloat(sum1) + parseFloat(sum2);
 };
 
