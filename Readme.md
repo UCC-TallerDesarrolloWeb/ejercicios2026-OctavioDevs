@@ -57,8 +57,8 @@
 -  [X] Operaciones Matemáticas
 -  [X] Conversor de Unidades II
 -  [X] Operaciones Matemáticas II
--  [ ] Renderizado Dinámico
--  [ ] Renderizado Dinámico del Dialog
+-  [X] Renderizado Dinámico
+-  [X] Renderizado Dinámico del Dialog
 -  [ ] Carrito de Compras con localstorage
 -  [ ] Vaciar Carrito y Eliminar Producto
 -  [ ] Filter
