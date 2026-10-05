@@ -61,127 +61,241 @@ const productos = [
   },
 ];
 
-/**
-* Muestra el modal con la información del producto seleccionado.
-*
-* @method mostrarModal
-* @param {number} num - Índice del producto dentro del arreglo productos.
-* @returns {void}
-*/
-const mostrarModal = (num) => {
-  document.getElementById("nombre-producto").innerText =
-      productos[num].nombre;
-
-  document.getElementById("descripcion-producto").innerText =
-      productos[num].description;
-
-  document.getElementById("modal").style.display = "block";
-};
-
-/**
-* Cierra el modal de detalle del producto.
-*
-* @method cerrarModal
-* @returns {void}
-*/
-const cerrarModal = () => {
-  document.getElementById("modal").style.display = "none";
-};
-
-/**
-* Genera dinámicamente el catálogo de productos.
-*
-* @method mostrarCatalogo
-* @returns {void}
-*/
-const mostrarCatalogo = () => {
-  let contenido = "";
-
-  productos.forEach((producto, id) => {
-      contenido += `
-          <div>
-              <img
-                  src="https://ucc-tallerdesarrolloweb.github.io/filminas/images/ejercicios/${producto.imagen}"
-                  alt="${producto.nombre}"
-              >
-
-              <h3>${producto.nombre}</h3>
-
-              <button type="button" onclick="mostrarModal(${id})">
-                  Ver detalle de producto
-              </button>
-
-              <button type="button" onclick="agregarAlCarrito(${id})">
-                  Agregar al carrito
-              </button>
-          </div>
-      `;
+// Formatea los precios como $35.000,00.
+const formatoMoneda = new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   });
 
-  document.getElementById("catalogo").innerHTML = contenido;
-};
-
-/**
-* Agrega el índice de un producto al carrito y lo guarda.
-*
-* @method agregarAlCarrito
-* @param {number} num - Índice del producto dentro del arreglo productos.
-* @returns {void}
-*/
-const agregarAlCarrito = (num) => {
-  let carritoList = localStorage.getItem("carrito");
-
-  // También contempla el texto vacío que podía guardar el código anterior.
-  if (carritoList === null || carritoList === "") {
-      carritoList = [];
-  } else {
-      carritoList = JSON.parse(carritoList);
+  function formatearPrecio(precio) {
+    return formatoMoneda.format(precio);
   }
 
-  carritoList.push(num);
-
-  localStorage.setItem("carrito", JSON.stringify(carritoList));
-};
-
-/**
-* Lee el carrito guardado y muestra los nombres y precios.
-*
-* @method cargarCarrito
-* @returns {void}
-*/
-const cargarCarrito = () => {
-  let carritoList = localStorage.getItem("carrito");
-  let contenido = "";
-
-  if (carritoList === null || carritoList === "") {
-      carritoList = [];
-  } else {
-      carritoList = JSON.parse(carritoList);
+  // Obtiene el carrito guardado.
+  // Cada posición contiene el índice de un producto.
+  function obtenerCarrito() {
+    return JSON.parse(localStorage.getItem("carrito")) || [];
   }
 
-  if (carritoList.length === 0) {
-      contenido = "<div>Su carrito está vacío.</div>";
-  } else {
-      carritoList.forEach((num) => {
-          contenido += `
-              <div>
-                  <h3>${productos[num].nombre}</h3>
-                  <p>$${productos[num].precio}</p>
-              </div>
-          `;
-      });
+  function guardarCarrito(carrito) {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 
-  document.getElementById("mostrar-carrito").innerHTML = contenido;
-};
+  // Actualiza el contador del enlace al carrito.
+  function actualizarContador() {
+    const contador = document.getElementById("cantidad-carrito");
 
-/**
- * Vacía el carrito y actualiza su contenido en pantalla.
- *
- * @method vaciarCarrito
- * @returns {void}
- */
-const vaciarCarrito = () => {
-  localStorage.removeItem("carrito");
-  cargarCarrito();
-};
+    if (contador) {
+      contador.innerText = obtenerCarrito().length;
+    }
+  }
+
+  // Muestra los detalles del producto.
+  function mostrarModal(num) {
+    document.getElementById("nombre-producto").innerText =
+      productos[num].nombre;
+
+    document.getElementById("descripcion-producto").innerText =
+      productos[num].description;
+
+    document.getElementById("modal").showModal();
+  }
+
+  function cerrarModal() {
+    document.getElementById("modal").close();
+  }
+
+  // Aplica filtros y orden al catálogo.
+  function mostrarCatalogo() {
+    const busqueda = document.getElementById("search")
+      .value.trim().toLowerCase();
+
+    const precioMinimo = document.getElementById("price-min").value;
+    const precioMaximo = document.getElementById("price-max").value;
+    const marca = document.getElementById("marca").value;
+    const orden = document.getElementById("orden").value;
+
+    const categorias = Array.from(
+      document.querySelectorAll('input[name="tipo"]:checked')
+    ).map((checkbox) => checkbox.value);
+
+    // Conserva el índice original de cada producto.
+    // Así, ordenar o filtrar no altera las referencias del carrito.
+    let lista = productos.map((producto, id) => ({
+      ...producto,
+      id: id,
+    }));
+
+    lista = lista.filter((producto) => {
+      const coincideTexto =
+        producto.nombre.toLowerCase().includes(busqueda) ||
+        producto.description.toLowerCase().includes(busqueda);
+
+      const coincideMinimo =
+        precioMinimo === "" ||
+        producto.precio >= Number(precioMinimo);
+
+      const coincideMaximo =
+        precioMaximo === "" ||
+        producto.precio <= Number(precioMaximo);
+
+      const coincideMarca =
+        marca === "" || producto.marca === marca;
+
+      const coincideCategoria =
+        categorias.length === 0 ||
+        categorias.includes(producto.categoria.toLowerCase());
+
+      return (
+        coincideTexto &&
+        coincideMinimo &&
+        coincideMaximo &&
+        coincideMarca &&
+        coincideCategoria
+      );
+    });
+
+    switch (orden) {
+      case "precio-asc":
+        lista.sort((a, b) => a.precio - b.precio);
+        break;
+
+      case "precio-desc":
+        lista.sort((a, b) => b.precio - a.precio);
+        break;
+
+      case "nombre-asc":
+        lista.sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+        break;
+
+      case "nombre-desc":
+        lista.sort((a, b) => b.nombre.localeCompare(a.nombre, "es"));
+        break;
+    }
+
+    let contenido = "";
+
+    lista.forEach((producto) => {
+      contenido += `
+        <div>
+          <img
+            src="https://ucc-tallerdesarrolloweb.github.io/filminas/images/ejercicios/${producto.imagen}"
+            alt="${producto.nombre}"
+          >
+
+          <h3>${producto.nombre}</h3>
+          <p>Marca: ${producto.marca}</p>
+          <p>Precio: ${formatearPrecio(producto.precio)}</p>
+
+          <button
+            type="button"
+            onclick="mostrarModal(${producto.id})"
+          >
+            Ver detalle de Producto
+          </button>
+
+          <button
+            type="button"
+            onclick="agregarAlCarrito(${producto.id})"
+          >
+            Agregar al Carrito
+          </button>
+        </div>
+      `;
+    });
+
+    document.getElementById("catalogo").innerHTML =
+      contenido || "<p>No se encontraron productos con esos filtros.</p>";
+
+    actualizarContador();
+  }
+
+  // Agrega una unidad al carrito.
+  function agregarAlCarrito(num) {
+    const carrito = obtenerCarrito();
+
+    carrito.push(num);
+
+    guardarCarrito(carrito);
+    actualizarContador();
+  }
+
+  // Vacía el carrito usando removeItem.
+  function vaciarCarrito() {
+    localStorage.removeItem("carrito");
+    mostrarCarrito();
+  }
+
+  // Elimina una unidad del producto usando splice.
+  function eliminarProducto(num) {
+    const carrito = obtenerCarrito();
+    const posicion = carrito.indexOf(num);
+
+    if (posicion !== -1) {
+      carrito.splice(posicion, 1);
+    }
+
+    guardarCarrito(carrito);
+    mostrarCarrito();
+  }
+
+  // Muestra los productos agrupados, sus cantidades y el total.
+  function mostrarCarrito() {
+    const carrito = obtenerCarrito();
+    let contenido = "";
+    let total = 0;
+
+    // Cuenta cuántas veces aparece cada producto.
+    const cantidades = {};
+
+    carrito.forEach((num) => {
+      cantidades[num] = (cantidades[num] || 0) + 1;
+    });
+
+    Object.keys(cantidades).forEach((clave) => {
+      const num = Number(clave);
+      const producto = productos[num];
+      const cantidad = cantidades[num];
+      const subtotal = producto.precio * cantidad;
+
+      total += subtotal;
+
+      contenido += `
+        <div>
+          <img
+            src="https://ucc-tallerdesarrolloweb.github.io/filminas/images/ejercicios/${producto.imagen}"
+            alt="${producto.nombre}"
+          >
+
+          <h3>${producto.nombre}</h3>
+          <p>${producto.description}</p>
+
+          <p>Precio unitario: ${formatearPrecio(producto.precio)}</p>
+          <p>Cantidad: ${cantidad}</p>
+          <p>Subtotal: ${formatearPrecio(subtotal)}</p>
+
+          <button
+            type="button"
+            onclick="eliminarProducto(${num})"
+          >
+            Eliminar una unidad
+          </button>
+        </div>
+      `;
+    });
+
+    document.getElementById("carrito").innerHTML =
+      contenido || "<p>No hay productos en el carrito.</p>";
+
+    document.getElementById("cantidad-total").innerText = carrito.length;
+
+    document.getElementById("total-pagar").innerText =
+      formatearPrecio(total);
+
+    document.getElementById("vaciar-carrito").disabled =
+      carrito.length === 0;
+
+    actualizarContador();
+  }

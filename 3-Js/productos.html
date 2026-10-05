@@ -15,21 +15,28 @@
 
     <nav class="item2">
         <a href="productos.html">Catálogo de Productos</a>
-        <a href="carrito.html">Carrito de Compras</a>
+        <a href="carrito.html">
+            Carrito de Compras (<span id="cantidad-carrito">0</span>)
+        </a>
     </nav>
 
     <aside class="item3">
-        <form name="filter" id="filter">
-
+        <form
+            name="filtros"
+            id="filtrer"
+            onsubmit="event.preventDefault()"
+            oninput="mostrarCatalogo()"
+            onchange="mostrarCatalogo()"
+        >
             <fieldset>
                 <legend>Buscador</legend>
 
-                <label for="search">Buscar</label>
+                <label for="search">Buscar:</label>
                 <input
                     type="text"
-                    name="search"
                     id="search"
-                    placeholder="Buscar"
+                    name="search"
+                    placeholder="Buscar productos..."
                 >
             </fieldset>
 
@@ -37,34 +44,48 @@
                 <legend>Precios</legend>
 
                 <p>
-                    <label for="price-min">Mínimo</label>
+                    <label for="price-min">Mínimo:</label>
                     <input
                         type="number"
-                        name="price-min"
                         id="price-min"
+                        name="price-min"
                         min="0"
+                        step="0.01"
                     >
                 </p>
 
                 <p>
-                    <label for="price-max">Máximo</label>
+                    <label for="price-max">Máximo:</label>
                     <input
                         type="number"
-                        name="price-max"
                         id="price-max"
+                        name="price-max"
                         min="0"
+                        step="0.01"
                     >
                 </p>
             </fieldset>
 
             <fieldset>
-                <legend>Tipo de Producto</legend>
+                <legend>Marca</legend>
+
+                <label for="marca">Seleccionar marca:</label>
+
+                <select id="marca" name="marca">
+                    <option value="">Todas las marcas</option>
+                    <option value="Gran Marc">Gran Marc</option>
+                    <option value="Daedo">Daedo</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Tipo de Productos</legend>
 
                 <p>
                     <input
                         type="checkbox"
-                        name="tipo"
                         id="protectores"
+                        name="tipo"
                         value="protectores"
                     >
                     <label for="protectores">Protectores</label>
@@ -73,8 +94,8 @@
                 <p>
                     <input
                         type="checkbox"
-                        name="tipo"
                         id="entrenamiento"
+                        name="tipo"
                         value="entrenamiento"
                     >
                     <label for="entrenamiento">Entrenamiento</label>
@@ -83,14 +104,42 @@
                 <p>
                     <input
                         type="checkbox"
-                        name="tipo"
                         id="dobok"
+                        name="tipo"
                         value="dobok"
                     >
                     <label for="dobok">Dobok</label>
                 </p>
             </fieldset>
 
+            <fieldset>
+                <legend>Ordenar catálogo</legend>
+
+                <label for="orden">Orden:</label>
+
+                <select id="orden" name="orden">
+                    <option value="">Orden original</option>
+                    <option value="precio-asc">
+                        Precio: menor a mayor
+                    </option>
+                    <option value="precio-desc">
+                        Precio: mayor a menor
+                    </option>
+                    <option value="nombre-asc">
+                        Nombre: A-Z
+                    </option>
+                    <option value="nombre-desc">
+                        Nombre: Z-A
+                    </option>
+                </select>
+            </fieldset>
+
+            <button
+                type="button"
+                onclick="this.form.reset(); mostrarCatalogo();"
+            >
+                Limpiar filtros
+            </button>
         </form>
     </aside>
 

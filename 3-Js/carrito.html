@@ -7,7 +7,7 @@
     <script type="text/javascript" src="tienda.js"></script>
 </head>
 
-<body class="grid-container" onload="cargarCarrito()">
+<body class="grid-container" onload="mostrarCarrito()">
 
     <header class="item1">
         Carrito de Compras
@@ -15,12 +15,32 @@
 
     <nav class="item2">
         <a href="productos.html">Catálogo de Productos</a>
-        <a href="carrito.html">Carrito de Compras</a>
+        <a href="carrito.html">
+            Carrito de Compras (<span id="cantidad-carrito">0</span>)
+        </a>
     </nav>
-    <button type="button" onclick="vaciarCarrito()">
-        Vaciar carrito
-    </button>
-    <main class="item4" id="mostrar-carrito"></main>
+    <aside class="item3">
+        <h2>Resumen de compra</h2>
+
+        <p>
+            Cantidad de productos:
+            <strong id="cantidad-total">0</strong>
+        </p>
+
+        <p>
+            Total a pagar:
+            <strong id="total-pagar">$0,00</strong>
+        </p>
+
+        <button
+            type="button"
+            id="vaciar-carrito"
+            onclick="vaciarCarrito()"
+        >
+            Vaciar el carrito
+        </button>
+    </aside>
+    <main class="item4" id="carrito"></main>
 
     <footer class="item5">
         Contacto:
