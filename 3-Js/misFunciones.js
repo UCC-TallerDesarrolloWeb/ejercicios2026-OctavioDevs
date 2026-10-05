@@ -2,17 +2,22 @@
  * Conversión de unidades de metros, pies, yardas y pulgadas
  * @method convertirUnidades
  * @param {string} id - id del elemento input en el HTML
- * @param {number} valor - valor ingresado por el usuario
+ * @param {string} valor - valor ingresado por el usuario
+ * @returns {void} Actualiza los campos del conversor.
  */
 const convertirUnidades = (id, valor) => {
 
     let metros, pulgadas, pie, yardas;
 
-    valor = valor.replace(",",".");
+    valor = valor.trim().replace(",", ".");
+    const entradaVacia = valor === "";
+    valor = Number(valor);
 
-    if (isNaN(valor)) {
+    if (entradaVacia || !Number.isFinite(valor)) {
 
-        alert("Se ingresó un valor incorrecto: " + id);
+        if (!entradaVacia) {
+            alert("Se ingresó un valor incorrecto: " + id);
+        }
 
         metros = "";
         pulgadas = "";
@@ -48,10 +53,10 @@ const convertirUnidades = (id, valor) => {
         pie = 3 * valor;
     }
 
-    document.getElementById("metro").value = Math.round(metros*100)/100;
-    document.getElementById("pulgada").value = Math.round(pulgadas*100)/100;
-    document.getElementById("pie").value = pie.toFixed(2);
-    document.getElementById("yarda").value = yardas.toFixed(2);
+    document.getElementById("metro").value = Number.isFinite(metros) ? metros.toFixed(2) : "";
+    document.getElementById("pulgada").value = Number.isFinite(pulgadas) ? pulgadas.toFixed(2) : "";
+    document.getElementById("pie").value = Number.isFinite(pie) ? pie.toFixed(2) : "";
+    document.getElementById("yarda").value = Number.isFinite(yardas) ? yardas.toFixed(2) : "";
 };
 
 
@@ -104,7 +109,7 @@ const sumar = () => {
     sum1 = document.getElementById("nums1").value;
     sum2 = document.getElementById("nums2").value;
 
-    document.getElementById("totalS").innerText =
+    document.getElementById("totalS").innerHTML =
         parseFloat(sum1) + parseFloat(sum2);
 };
 
@@ -120,7 +125,7 @@ const restar = () => {
     res1 = document.getElementById("numr1").value;
     res2 = document.getElementById("numr2").value;
 
-    document.getElementById("totalR").value =
+    document.getElementById("totalR").innerHTML =
         parseFloat(res1) - parseFloat(res2);
 };
 
@@ -136,7 +141,7 @@ const multiplicar = () => {
     mul1 = document.getElementById("numm1").value;
     mul2 = document.getElementById("numm2").value;
 
-    document.getElementById("totalM").value =
+    document.getElementById("totalM").innerHTML =
         parseFloat(mul1) * parseFloat(mul2);
 };
 
@@ -152,6 +157,6 @@ const dividir = () => {
     div1 = document.getElementById("numd1").value;
     div2 = document.getElementById("numd2").value;
 
-    document.getElementById("totalD").value =
+    document.getElementById("totalD").innerHTML =
         parseFloat(div1) / parseFloat(div2);
 };
