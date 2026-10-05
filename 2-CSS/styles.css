@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+div {
+    border: 1px solid purple;
+    margin: 15px;
+    padding: 10px 25px 12px;
+    background-color: rgb(251, 153, 251, 0.315);
+    border-radius: 10px;
+    box-shadow: 10px 8px rgb(165, 1, 165);
+}
+
+#user {
+    width: 9.3%;
+    float: left;
+    border-radius: 50%;
+}
+
+.main_style {
+    text-align: center;
+    font-family: "Nunito", sans-serif;
+    background: linear-gradient(to right, rgb(239, 131, 212), rgb(217, 0, 255))
+}
+
+h3 {
+    text-shadow: 3px 2px rgb(111, 106, 106);
+}
