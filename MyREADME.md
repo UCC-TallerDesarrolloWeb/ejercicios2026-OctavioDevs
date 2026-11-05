@@ -9,8 +9,8 @@ Sobre Mi:
 - Licenciatura en Bioinformatica
 - Universidad Catolica de Cordoba
 
-1. Octavio Jose *Albarracin Simes*
-2. Maria Emilia *Garcia*
+1. Octavio Jose **Albarracin Simes**
+2. Maria Emilia **Garcia**
 
 ### Contenido:
 Este repositorio contiene ejercicios de practica para taller de desarrollo web.
