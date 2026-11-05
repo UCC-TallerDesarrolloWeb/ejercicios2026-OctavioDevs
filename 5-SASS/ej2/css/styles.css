@@ -1,0 +1,96 @@
+body {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0 30px;
+}
+header img {
+  width: 75px;
+}
+header nav {
+  display: flex;
+  gap: 30px;
+}
+header a {
+  text-decoration: none;
+  color: #333;
+  font-size: 12px;
+}
+
+#home {
+  background: #ef7500;
+  color: white;
+  padding: 50px 10%;
+}
+#home h1 {
+  font-size: 28px;
+}
+#home p {
+  line-height: 1.6;
+}
+#home .boton {
+  display: inline-block;
+  background: white;
+  color: #333;
+  padding: 12px 20px;
+  text-decoration: none;
+  border: 1px solid #333;
+}
+
+#portfolio {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 30px;
+}
+#portfolio img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+#about {
+  padding: 20px 0;
+}
+
+footer {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+  header {
+    flex-direction: column;
+    gap: 20px;
+  }
+  header nav {
+    gap: 15px;
+  }
+  #home {
+    padding: 25px;
+  }
+  #home h1 {
+    font-size: 24px;
+  }
+  #portfolio {
+    grid-template-columns: 1fr;
+  }
+  #portfolio img {
+    height: auto;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
