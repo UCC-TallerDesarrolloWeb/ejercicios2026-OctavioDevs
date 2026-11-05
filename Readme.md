@@ -67,30 +67,30 @@
 -  [X] Ordenar el catálogo
 
 ## Unidad 4: Funcionamiento del Navegador y Herramientas de Desarrollo
--  [ ] Checkeo de accesiilidad: AXE
--  [ ] Checkeo de Lighthouse: accesibilidad, CEO, performance, buenas prácticas
+-  [x] Checkeo de accesiilidad: AXE
+-  [x] Checkeo de Lighthouse: accesibilidad, CEO, performance, buenas prácticas
 
 ## Unidad 5: Frameworks y Preprocesadores CSS
 
 ### BootStrap
--  [ ] Instagram
--  [ ] Componente para selección de vuelos
--  [ ] Timeline
--  [ ] Componente Perfil
--  [ ] Youtube
+-  [x] Instagram
+-  [x] Componente para selección de vuelos
+-  [x] Timeline
+-  [x] Componente Perfil
+-  [x] Youtube
 
 ### SASS
--  [ ] Sass básico
--  [ ] Diseño de Interiores
+-  [x] Sass básico
+-  [x] Diseño de Interiores
 
 ## Unidad 6: Frameworks de JavaScript: React, Vue y Angular
--  [ ] Instalación de React Usando Vite
--  [ ] Login Básico
--  [ ] Redirección de Rutas
--  [ ] Outlet
--  [ ] Estructura del Proyecto
--  [ ] Imágenes
--  [ ] Children
+-  [X] Instalación de React Usando Vite
+-  [x] Login Básico
+-  [x] Redirección de Rutas
+-  [x] Outlet
+-  [x] Estructura del Proyecto
+-  [x] Imágenes
+-  [x] Children
 
 
 ## Unidad 7: Backend y APIs
